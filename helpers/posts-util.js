@@ -5,9 +5,9 @@ import matter from 'gray-matter';
 const postsDirectory = path.join(process.cwd(), 'posts');
 
 function getPostData(fileName) {
-  const filePath = path.join(process.cwd(), fileName);
+  const filePath = path.join(postsDirectory, fileName);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data, content } = mater(fileContent);
+  const { data, content } = matter(fileContent);
 
   const postSlug = fileName.replace(/\.md$/, '');
 
@@ -20,8 +20,8 @@ function getPostData(fileName) {
   return postData;
 }
 
-function getAllPost() {
-  const postFiles = fs.readFileSync(postsDirectory);
+function getAllPosts() {
+  const postFiles = fs.readdirSync(postsDirectory);
 
   const allPosts = postFiles.map((postFile) => {
     return getPostData(postFile);
@@ -34,7 +34,7 @@ function getAllPost() {
   return sortedPosts;
 }
 
-function getFeaturedPosts() {
+export function getFeaturedPosts() {
   const allPosts = getAllPosts();
   const featuredPosts = allPosts.filter((post) => post.isFeatured);
 
