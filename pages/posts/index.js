@@ -1,24 +1,18 @@
 import AllPosts from '../../components/posts/all-posts';
+import { getAllPosts } from './../../helpers/posts-util';
 
-const DUMMY_POSTS = [
-  {
-    title: 'First posts',
-    date: '2020-05-20',
-    summary: 'This is summary',
-    slug: 'first-posts',
-    image: 'admin.png',
-  },
-  {
-    title: 'Secondary posts',
-    date: '2020-05-20',
-    summary: 'This is summary secondary',
-    slug: 'secondary-posts',
-    image: 'admin.png',
-  },
-];
-
-function AllPostsPage() {
-  return <AllPosts posts={DUMMY_POSTS} />;
+function AllPostsPage(props) {
+  const { posts } = props;
+  return <AllPosts posts={posts} />;
 }
 
 export default AllPostsPage;
+
+export function getStaticProps() {
+  const allPosts = getAllPosts();
+  return {
+    props: {
+      posts: allPosts,
+    },
+  };
+}
