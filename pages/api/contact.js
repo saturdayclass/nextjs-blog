@@ -25,7 +25,7 @@ async function handler(req, res) {
     let client;
     try {
       client = await MongoClient.connect(
-        'mongodb+srv://raihan:BUfHtmMEEBWkyoSY@cluster0.jw9qb.mongodb.net/nextjs-blog?retryWrites=true&w=majority',
+        `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_cluster}.jw9qb.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`,
         { useUnifiedTopology: true }
       );
     } catch (err) {
