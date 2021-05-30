@@ -3,19 +3,19 @@ module.exports = (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       env: {
-        mongodb_username: 'raihan',
+        mongodb_username: 'your_username',
         mongodb_password: 'your_password',
-        mongodb_cluster: 'cluster0',
-        mongodb_database: 'nextjs-blog-dev',
+        mongodb_cluster: 'your_cluster',
+        mongodb_database: 'your_database_for_development',
       },
     };
   }
   return {
     env: {
-      mongodb_username: 'raihan',
+      mongodb_username: 'your_username',
       mongodb_password: 'your_password',
-      mongodb_cluster: 'cluster0',
-      mongodb_database: 'nextjs-blog',
+      mongodb_cluster: 'your_cluster',
+      mongodb_database: 'your_database_for_production',
     },
   };
 };
